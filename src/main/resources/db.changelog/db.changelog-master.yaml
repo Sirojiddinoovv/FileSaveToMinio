@@ -1,0 +1,5 @@
+databaseChangeLog:
+
+  - include:
+      file: /file_saver_table.yml
+      relativeToChangelogFile: true

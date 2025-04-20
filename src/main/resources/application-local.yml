@@ -1,0 +1,49 @@
+server:
+  port: 8705
+  servlet:
+    context-path: /file
+
+spring:
+  application:
+    name: file
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/file
+    username: file
+    password: file
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 30000
+      max-lifetime: 30000
+      maximum-pool-size: 15
+      validation-timeout: 10000
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  liquibase:
+    enabled: true
+    change-log: db.changelog/db.changelog-master.yaml
+    default-schema: public
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+
+external:
+  minio:
+    url: http://127.0.0.1:9000
+    accessKey: 0DHfm1R7BoNtcsXQXxn2
+    secretKey: sEcret-k3y
+    bucket: 'test'
+
+internal:
+  file:
+    maxCountForOneLoan: 10
+    maxFileSizeInMB: 1
